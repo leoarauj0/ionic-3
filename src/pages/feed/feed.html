@@ -15,7 +15,44 @@
 
 <ion-content padding>
   <div>
-    <h2 class="feed_title">Olá {{ nome_usuario }}</h2>
+      <ion-card *ngFor="let filme of lista_filmes">                          <!-- ngFor é uma diretiva do angular que serve para chamar cada item da lista repetindo cada um-->
+
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/imgs/feed/layla.png">
+            </ion-avatar>
+            <h2>{{ filme.original_title }}</h2>
+            <p>{{ filme.release_date }}</p>
+          </ion-item>
+        
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + filme.backdrop_path">                             <!-- [src] é um biding para propiedade src usar variavel -->
+          
+          <ion-card-content>
+            <p>{{ filme.overview }}</p>
+
+          </ion-card-content>
+        
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="thumbs-up"></ion-icon>
+                <div>{{ filme.vote_count }} Curtidas</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="text"></ion-icon>
+                <div>{{ filme.vote_average }} /10 de Média</div>
+              </button>
+            </ion-col>
+            <ion-col center text-center>
+              <ion-note>
+                  {{ obj_feed.time_post }}h Atrás
+              </ion-note>
+            </ion-col>
+          </ion-row>
+        
+        </ion-card>
   </div>
 
     
