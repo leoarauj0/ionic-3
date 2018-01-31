@@ -46,7 +46,12 @@ export class FeedPage {
     this.filmeProvider.getUltimoFilme().subscribe(                            //subscribe é uma função do Observable que é para avisar quando essa linha de codigo for rodada avisar que a informação foi retornada.
       data=>{
 
-        this.lista_filmes = data.results;     //results é do json e mostra os resultadas da pesquisa 
+        //const resposta = data;
+        //const retorno = JSON.parse((<any>data)._body);
+        this.lista_filmes = (<any>data).results;
+
+
+        //this.lista_filmes = data.results;                                     //results é do json e mostra os resultadas da pesquisa 
 
         console.log(data);                                                    //mostra a informação se for retornada 
       }, error => {
